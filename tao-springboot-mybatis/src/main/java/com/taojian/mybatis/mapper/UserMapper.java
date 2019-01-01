@@ -1,8 +1,11 @@
 package com.taojian.mybatis.mapper;
 
 import com.taojian.mybatis.bean.User;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface UserMapper {
+
     int deleteByPrimaryKey(Integer userId);
 
     int insert(User record);
