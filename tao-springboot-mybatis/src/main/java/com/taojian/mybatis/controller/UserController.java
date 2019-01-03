@@ -20,7 +20,7 @@ public class UserController {
     @RequestMapping(value="testinsert")
     public String testInsert(){
         User user = new User();
-        user.setUserId(1);
+        user.setUserId(2);
         user.setPhone("133333333");
         user.setUserName("taojian");
         user.setPassword("123");
