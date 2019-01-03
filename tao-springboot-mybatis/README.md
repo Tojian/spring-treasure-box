@@ -1,44 +1,15 @@
-# springboot 与mybatis整合
 
 
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE generatorConfiguration
-        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
-        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
-<generatorConfiguration>
-    <!-- 数据库驱动:选择你的本地硬盘上面的数据库驱动包-->
-    <classPathEntry  location="/Users/taojian/mvnjar/mysql/mysql-connector-java/5.1.29/mysql-connector-java-5.1.29.jar"/>
-    <context id="DB2Tables"  targetRuntime="MyBatis3">
-        <commentGenerator>
-            <property name="suppressDate" value="true"/>
-            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
-            <property name="suppressAllComments" value="true"/>
-        </commentGenerator>
-        <!--数据库链接URL，用户名、密码 -->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1/mytest" userId="root" password="root">
-        </jdbcConnection>
-        <javaTypeResolver>
-            <property name="forceBigDecimals" value="false"/>
-        </javaTypeResolver>
-        <!-- 生成模型的包名和位置-->
-        <javaModelGenerator targetPackage="com.taojian.mybatis.bean" targetProject="src/main/java">
-            <property name="enableSubPackages" value="true"/>
-            <property name="trimStrings" value="true"/>
-        </javaModelGenerator>
-        <!-- 生成映射文件的包名和位置-->
-        <sqlMapGenerator targetPackage="mapping" targetProject="src/main/resources">
-            <property name="enableSubPackages" value="true"/>
-        </sqlMapGenerator>
-        <!-- 生成DAO的包名和位置-->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.taojian.mybatis.mapper" targetProject="src/main/java">
-            <property name="enableSubPackages" value="true"/>
-        </javaClientGenerator>
-        <!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名-->
-        <table tableName="t_user" domainObjectName="User" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
-    </context>
-</generatorConfiguration>
-
-```
-## mybatis-generator:generate -e
+ 
+# Springboot与Mybatis整合
+# 步骤
+## 一、pom文件添加mybatis相关依赖
+## 二、利用mybatis generator插件生成代码
+### 1.加入插件依赖          
+### 2.编写generatorConfig.xml文件
+### 3.配置启动插件
+### 4.启动自动生成代码
+## 三、添加application.properties文件
+## 四、启动项
+----
+**详细步骤操作参考：**[Springboot与Mybatis整合](https://taobigbig.com/2019/01/03/springboot%E6%95%B4%E5%90%88Mybatis/)
