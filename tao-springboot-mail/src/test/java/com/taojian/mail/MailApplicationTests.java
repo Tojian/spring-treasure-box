@@ -1,5 +1,6 @@
 package com.taojian.mail;
 
+import com.taojian.mail.service.MailSender;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,9 @@ public class MailApplicationTests {
     @Autowired
     private TemplateEngine templateEngine;
 
+
+    @Autowired
+    private MailSender mailSend;
 
     @Test
     public void sendTxtMail() {
@@ -79,6 +83,7 @@ public class MailApplicationTests {
         mailSender.send(mimeMessage);
 
     }
+
     @Test
     public void sendTemplateMail() throws MessagingException {
         //创建邮件正文
@@ -96,4 +101,39 @@ public class MailApplicationTests {
         mailSender.send(mimeMessage);
     }
 
+    // ----------------------------------------------------------------------
+
+    @Test
+    public void testSimpleMail() throws Exception {
+        mailSend.sendTxtMail("test simple mail", " hello this is text mail");
+    }
+
+    @Test
+    public void testHtmlMail() throws Exception {
+        String content = "<html>\n" +
+                "<body>\n" +
+                "    <h3>hello world ! 这是一封Html邮件!</h3>\n" +
+                "</body>\n" +
+                "</html>";
+        mailSend.sendHtmlMail("test simple mail", content);
+    }
+
+    @Test
+    public void testsendAttachmentsMail() {
+        String path = "/Users/taojian/Files/projectSofeware/github/spring-treasure-box/tao-springboot-mail/src/test/java/com/taojian/mail/tao.jpg";
+        mailSend.sendAttachmentsMail("附件发送", "有附件", path);
+    }
+
+    @Test
+    public void testsendInlineMail() {
+        String content = "<html><body><img src=\"cid:tao\" ></body></html>";
+        String path = "/Users/taojian/Files/projectSofeware/github/spring-treasure-box/tao-springboot-mail/src/test/java/com/taojian/mail/tao.jpg";
+        mailSend.sendInlineMail("sendInlineMail", content, path);
+    }
+
+    @Test
+    public void testsendTemplateMail() {
+
+        mailSend.sendTemplateMail("send mail template", "send mail template test");
+    }
 }
