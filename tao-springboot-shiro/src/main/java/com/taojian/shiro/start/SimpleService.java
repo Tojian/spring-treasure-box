@@ -1,5 +1,10 @@
 package com.taojian.shiro.start;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
+
 /**
  * @description:
  * @author: taojian

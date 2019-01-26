@@ -1,6 +1,14 @@
 package com.taojian.shiro.start;
 
-import sun.security.krb5.Realm;
+
+import org.apache.shiro.realm.Realm;
+import org.apache.shiro.realm.text.TextConfigurationRealm;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
 
 /**
  * @description:Spring Boot Application that show the usage of a user login, checking permissions, and annotation protected methods.
@@ -13,7 +21,7 @@ public class StartApp { //NOPMD
 
     public static void main(String[] args) {
 
-        ConfigurableApplicationContext context = SpringApplication.run(CliApp.class, args);
+        ConfigurableApplicationContext context = SpringApplication.run(StartApp.class, args);
 
         // Grab the 'QuickStart' bean, call 'run()' to start the example.
         context.getBean(QuickStart.class).run();
