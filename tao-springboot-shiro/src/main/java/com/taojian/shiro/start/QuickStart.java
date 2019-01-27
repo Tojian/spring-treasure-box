@@ -3,11 +3,13 @@ package com.taojian.shiro.start;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.AuthorizationException;
+import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.util.Assert;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 
@@ -17,6 +19,7 @@ import javax.annotation.PostConstruct;
  * @author: taojian
  * @create: 2019-01-03 14:53
  **/
+@Component
 public class QuickStart {
 
     private static Logger log = LoggerFactory.getLogger(QuickStart.class);

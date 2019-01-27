@@ -25,6 +25,7 @@ public class StartApp { //NOPMD
 
         // Grab the 'QuickStart' bean, call 'run()' to start the example.
         context.getBean(QuickStart.class).run();
+
     }
 
     /**
