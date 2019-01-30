@@ -15,6 +15,10 @@
 * tao-springboot-activemq：springboot整合activemq
 * tao-springboot-mybatis：springboot整合mybatis
 * tao-springboot-redis：springboot整合redis
+* tao-springboot-swagger2：springboot整合swagger2
+* tao-springboot-shiro : springboot整合shiro
+* tao-springboot-thymeleaf : springboot整合thymeleaf
+* tao-springboot-mongodb : springboot整合mongodb
 
 ## 维护者
 taojian
