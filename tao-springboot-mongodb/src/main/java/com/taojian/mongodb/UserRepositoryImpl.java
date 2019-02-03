@@ -1,24 +1,22 @@
 package com.taojian.mongodb;
 
-import com.mongodb.WriteResult;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
+
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
+import org.springframework.stereotype.Component;
 
-import java.util.List;
-import java.util.Optional;
+
 
 /**
  * @description:
  * @author: taojian
  * @create: 2019-01-30 20:36
  **/
+@Component
 public class UserRepositoryImpl implements UserRepository {
 
     @Autowired
@@ -26,7 +24,9 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User findByUsername(String username) {
-        return null;
+        Query query=new Query(Criteria.where("userName").is(username));
+        User user =  mongoTemplate.findOne(query , User.class);
+        return user;
     }
 
     /**
@@ -44,8 +44,11 @@ public class UserRepositoryImpl implements UserRepository {
      * @param user
      */
     @Override
-    public int updateUser(User user) {
-     return 0;
+    public void updateUser(User user) {
+        Query query=new Query(Criteria.where("id").is(user.getId()));
+        Update update= new Update().set("userName", user.getUserName()).set("passWord", user.getPassWord());
+        //更新查询返回结果集的第一条
+        mongoTemplate.updateFirst(query,update,User.class);
     }
 
     /**
